@@ -45,20 +45,20 @@ To test the accuracy of the server-client interface, three bash scripts were mad
 2. The expected (proper) results of said input files (tallyVotes.sh)
 3. The accumulated results from the log-file (processLogFile.sh)
 ### Usage:
-- make server
-- (change terminal)
-- make run-client-test
-- (change back to server terminal)
-- CTRL + C
-- test-results
+1. make server
+2. (change terminal)
+3. make run-client-test
+4. (change back to server terminal)
+5. CTRL + C
+6. test-results
 
 To test with the normal (standard, non-changing) input, run:
-- make server
-- (change terminal)
-- make client
-- (change back to server terminal)
-- CTRL + C
-- normal-results
+1. make server
+2. (change terminal)
+3. make client
+4. (change back to server terminal)
+5. CTRL + C
+6. normal-results
 
 The last rule's (test-results / normal-results) last command (diff ... ) must indicate no difference between the two files.
 	
@@ -68,12 +68,13 @@ The last rule's (test-results / normal-results) last command (diff ... ) must in
 The server merely creates the master thread, and waits for it to finish. That happens when a SIGINT (CTRL + C) signal is propagated to the thread. The master thread initially creates the worker threads. Then, while active, it listens on the specified port number, accepts connections and stores them in the buffer, which is implemented as a queue. Each worker thread extracts a connection from the buffer and handles it, communicating with the client and recording the vote, if it is valid.
 When the master thread is interrupted by a SIGINT signal, it sends (broadcasts) that information to all worker threads (through pthread_cond_broadcast), waits for them to finish, frees unnecessary memory, creates the stats file, and exits.
 
-##Folder structure:
+## Folder structure:
 - include: All header files for both server and client
 - server: server source files
 - client: client source file
 - shared: structures that both the server and the client utilize, namely TheadArray and Vote.
 - scripts: Bash scripts for testing
+
 All binary and text files are saved at the top level. All object files (.o) are created and stored in the same folder as the corresponding source file.
 		
 	
