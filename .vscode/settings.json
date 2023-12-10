@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "*.py": "python",
+        "stdio.h": "c",
+        "unistd.h": "c",
+        "pthread.h": "c",
+        "errno.h": "c",
+        "stdlib.h": "c",
+        "string.h": "c",
+        "fcntl.h": "c",
+        "socket.h": "c",
+        "vote.h": "c"
+    },
+    "cmake.configureOnOpen": true
+}
