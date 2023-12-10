@@ -2,11 +2,11 @@
 
 ## Summary
 The server is launched, then a client process. The client process opens the input file, containing individual votes, then creates a new thread for each line. Each thread connects to the server (TCP connection) and communicates with it. The communcation follows the protocol:
-	[server]: "SEND NAME"
-	[client]:  <[name]_[surname]>
-	[server]: "SEND VOTE"
-	[client]: <[party_name]>
-	[server]: "VOTE FOR [party_name] RECORDED"
+	- [server]: "SEND NAME"
+	- [client]:  <[name]_[surname]>
+	- [server]: "SEND VOTE"
+	- [client]: <[party_name]>
+	- [server]: "VOTE FOR [party_name] RECORDED"
 
 name, surname, and party_name are contained in the line taken from the input file.
 Alternatively, if after receiving the voter's full name, the server determines that there is already a vote recorded by that person, instead of sending the "SEND VOTE" message, it will send "ALREADY VOTED" and close the connection.
@@ -21,13 +21,13 @@ The client server is run by executing
 	./pollSwayer [serverName] [portNum] [inputFile]
 
 In the above commands,
-	.portnum indicates the port-number that the server will listen to.
-	.numWorkerThreads indicates the number of worker-threads the server will produce. Those threads will execute the responses to the client requests. Must be >0.
-	. bufferSize indicates the size of the buffer that stores connections from clients waiting to be serviced. Must be >0.
-	. poll-log-file. The name of the file where each individual vote ( including username and party of choice ) is recorded. No such file need already exist, and if one exists, it is overwritten.
-	. poll-stats-file: The name of the file where the results ( number of votes per party ) are recorded.  No such file need already exist, and if one exists, it is overwritten.
-	. serverName: The name of the server to connect to.
-	. inputFile: A file containing votes. A line corresponds to one vote and has the format:
+	- portnum indicates the port-number that the server will listen to.
+	- numWorkerThreads indicates the number of worker-threads the server will produce. Those threads will execute the responses to the client requests. Must be >0.
+	- bufferSize indicates the size of the buffer that stores connections from clients waiting to be serviced. Must be >0.
+	- poll-log-file. The name of the file where each individual vote ( including username and party of choice ) is recorded. No such file need already exist, and if one exists, it is overwritten.
+	- poll-stats-file: The name of the file where the results ( number of votes per party ) are recorded.  No such file need already exist, and if one exists, it is overwritten.
+	- serverName: The name of the server to connect to.
+	- inputFile: A file containing votes. A line corresponds to one vote and has the format:
 		<name> (space) <surname> (space) <party_name> (newline character)
 
 For example, if this command is executed:
@@ -44,20 +44,20 @@ To test the accuracy of the server-client interface, three bash scripts were mad
 	2. The expected (proper) results of said input files (tallyVotes.sh)
 	3. The accumulated results from the log-file (processLogFile.sh)
 Usage:
-	. make server
-	. (change terminal)
-	. make run-client-test
-	. (change back to server terminal)
-	. CTRL + C
-	. test-results
+	- make server
+	- (change terminal)
+	- make run-client-test
+	- (change back to server terminal)
+	- CTRL + C
+	- test-results
 
 To test with the normal (standard, non-changing) input, run:
-	. make server
-	. (change terminal)
-	. make client
-	. (change back to server terminal)
-	. CTRL + C
-	. normal-results
+	- make server
+	- (change terminal)
+	- make client
+	- (change back to server terminal)
+	- CTRL + C
+	- normal-results
 
 The last rule's (test-results / normal-results) last command (diff ... ) must indicate no difference between the two files.
 	
@@ -68,11 +68,11 @@ The server merely creates the master thread, and waits for it to finish. That ha
 When the master thread is interrupted by a SIGINT signal, it sends (broadcasts) that information to all worker threads (through pthread_cond_broadcast), waits for them to finish, frees unnecessary memory, creates the stats file, and exits.
 
 ##Folder structure:
-	. include: All header files for both server and client
-	. server: server source files
-	. client: client source file
-	. shared: structures that both the server and the client utilize, namely TheadArray and Vote.
-	. scripts: Bash scripts for testing
+	- include: All header files for both server and client
+	- server: server source files
+	- client: client source file
+	- shared: structures that both the server and the client utilize, namely TheadArray and Vote.
+	- scripts: Bash scripts for testing
 All binary and text files are saved at the top level. All object files (.o) are created and stored in the same folder as the corresponding source file.
 		
 	
