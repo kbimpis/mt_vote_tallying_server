@@ -22,13 +22,13 @@ The client server is run by executing
 
 In the above commands,
 
-- portnum indicates the port-number that the server will listen to.
-- numWorkerThreads indicates the number of worker-threads the server will produce. Those threads will execute the responses to the client requests. Must be >0.
-- bufferSize indicates the size of the buffer that stores connections from clients waiting to be serviced. Must be >0.
-- poll-log-file. The name of the file where each individual vote ( including username and party of choice ) is recorded. No such file need already exist, and if one exists, it is overwritten.
-- poll-stats-file: The name of the file where the results ( number of votes per party ) are recorded.  No such file need already exist, and if one exists, it is overwritten.
-- serverName: The name of the server to connect to.
-- inputFile: A file containing votes. A line corresponds to one vote and has the format:
+- **portnum** indicates the port-number that the server will listen to.
+- **numWorkerThreads** indicates the number of worker-threads the server will produce. Those threads will execute the responses to the client requests. Must be >0.
+- **bufferSize** indicates the size of the buffer that stores connections from clients waiting to be serviced. Must be >0.
+- **poll-log-file**: The name of the file where each individual vote ( including username and party of choice ) is recorded. No such file need already exist, and if one exists, it is overwritten.
+- **poll-stats-file**: The name of the file where the results ( number of votes per party ) are recorded.  No such file need already exist, and if one exists, it is overwritten.
+- **serverName**: The name of the server to connect to.
+- **inputFile**: A file containing votes. A line corresponds to one vote and has the format:
 		<name> (space) <surname> (space) <party_name> (newline character)
 
 For example, if this command is executed:
