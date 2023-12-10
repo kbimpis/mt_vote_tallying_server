@@ -1,4 +1,4 @@
-# This repository contains the implementation of a vote-tallying program in C. It is implemented in three parts: A multi-threaded server, a multi-threaded client, and some bash scripts for testing purposes. It was completed in the context of a university assignment and rewarded full credit.
+# This repository contains the implementation of a vote-tallying program in C. It is implemented in three parts: A multi-threaded server, a multi-threaded client, and some bash scripts for testing purposes. It was completed in the context of a university assignment and awarded full credit.
 
 ## Summary
 The server is launched, then a client process. The client process opens the input file, containing individual votes, then creates a new thread for each line. Each thread connects to the server (TCP connection) and communicates with it. The communcation follows the protocol:
