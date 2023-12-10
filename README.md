@@ -21,8 +21,8 @@ The client server is run by executing
 	./pollSwayer [serverName] [portNum] [inputFile]
 
 In the above commands,
-	. portnum indicates the port-number that the server will listen to.
-	. numWorkerThreads indicates the number of worker-threads the server will produce. Those threads will execute the responses to the client requests. Must be >0.
+	.portnum indicates the port-number that the server will listen to.
+	.numWorkerThreads indicates the number of worker-threads the server will produce. Those threads will execute the responses to the client requests. Must be >0.
 	. bufferSize indicates the size of the buffer that stores connections from clients waiting to be serviced. Must be >0.
 	. poll-log-file. The name of the file where each individual vote ( including username and party of choice ) is recorded. No such file need already exist, and if one exists, it is overwritten.
 	. poll-stats-file: The name of the file where the results ( number of votes per party ) are recorded.  No such file need already exist, and if one exists, it is overwritten.
